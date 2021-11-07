@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8f4;
+    color: #333;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    padding-left: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    height: 10vh;
+}
+
+main h2 {
+    font-size: 16px;
+    margin-bottom: -10px;
+}
+
+main h3 {
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.out {
+    display: flex;
+    flex-flow: column wrap;
+    height: 80vh;
+}
+
+.in,
+.items {
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px;
+    margin: 0.5vw;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.in {
+    max-height: 25vh;
+    min-width: 340px;
+}
+
+.in:hover {
+    box-shadow: 5px 5px 10px gray;
+}
+
+.out .items {
+    padding: 10px 25px;
+    display: flex;
+    flex-flow: column;
+    order: 1;
+    min-height: 76vh;
+}
+
+.out .items label {
+    font-size: 16px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.out .items label[for^="rb"] {
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(211, 211, 211);
+    border-radius: 5px;
+}
+
+.out .items label[for^="rb"]:hover {
+    cursor: pointer;
+    background-color: rgb(139, 139, 139);
+    color: rgb(255, 248, 234);
+}
+
+img {
+    width: 250px;
+    height: auto;
+    float: left;
+    margin: 0 10px 5px 0;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.slider {
+    -webkit-appearance: none;
+    margin-bottom: 10px;
+    height: 12px;
+    border-radius: 15px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #545a54;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #545a54;
+    cursor: pointer;
+}
+
+.in p {
+    padding-top: 7px;
+    margin-top: auto;
+}
+
+
+/*???*/
+
+footer {
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer p:last-child {
+    margin-left: auto;
+}
+
+#rb1:checked~.out>.in:not(.breakfast),
+#rb2:checked~.out>.in:not(.snack),
+#rb3:checked~.out>.in:not(.lunch),
+#rb4:checked~.out>.in:not(.tea),
+#rb5:checked~.out>.in:not(.dinner) {
+    background-color: #ccc;
+    color: gray;
+}
+
+#rb1:checked~.out> :not(.breakfast)>img,
+#rb2:checked~.out> :not(.snack)>img,
+#rb3:checked~.out> :not(.lunch)>img,
+#rb4:checked~.out> :not(.tea)>img,
+#rb5:checked~.out> :not(.dinner)>img {
+    filter: grayscale(1);
+}
+
+#rb1:checked~.out> :not(.breakfast)>p,
+#rb2:checked~.out> :not(.snack)>p,
+#rb3:checked~.out> :not(.lunch)>p,
+#rb4:checked~.out> :not(.tea)>p,
+#rb5:checked~.out> :not(.dinner)>p {
+    border-color: gray;
+}
+
+#rb1:checked~.out .items label[for="rb1"],
+#rb2:checked~.out .items label[for="rb2"],
+#rb3:checked~.out .items label[for="rb3"],
+#rb4:checked~.out .items label[for="rb4"],
+#rb5:checked~.out .items label[for="rb5"] {
+    background-color: rgb(147, 174, 196);
+    color: rgb(253, 248, 238);
+}
+
+@media (max-width: 1200px) {
+    .out {
+        flex-flow: row wrap;
+        width: 98vw;
+        height: auto;
+    }
+    .in {
+        min-height: 235px;
+        max-width: 295px;
+        min-width: auto;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .in p {
+        display: none;
+    }
+    .in img {
+        float: none;
+        width: 275px;
+        height: 175px;
+        margin: 0;
+    }
+    .in h2,
+    .in h3 {
+        margin: 0;
+    }
+    .in h2 {
+        order: 1;
+    }
+    .out .items {
+        background-color: transparent;
+        border: 0.3vw solid transparent;
+        flex-flow: row wrap;
+        order: 0;
+        min-height: 20vh;
+        min-width: 97vw;
+    }
+    .out .items label[for="range"],
+    .out .items input[type="range"] {
+        display: none;
+    }
+    .out .items label[for^="rb"] {
+        flex: 1 1 20vw;
+        max-height: 20px;
+    }
+    footer a {
+        display: block;
+    }
+}
+
+@media (max-width: 730px) {
+    .out {
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+    .in {
+        background-color: transparent;
+        border: 0.3vw solid transparent;
+        padding: 0;
+        margin-bottom: 20px;
+        min-height: auto;
+        max-width: 97vw;
+        justify-content: center;
+    }
+    .in h2,
+    .in h3 {
+        display: none;
+    }
+    .in img {
+        width: 330px;
+        /* height: 210px; */
+        border-radius: 20px;
+    }
+    .in:hover {
+        box-shadow: 5px 5px 10px transparent;
+    }
+    img:hover {
+        box-shadow: 5px 5px 10px gray;
+    }
+    #rb1:checked~.out>.in:not(.breakfast),
+    #rb2:checked~.out>.in:not(.snack),
+    #rb3:checked~.out>.in:not(.lunch),
+    #rb4:checked~.out>.in:not(.tea),
+    #rb5:checked~.out>.in:not(.dinner) {
+        background-color: transparent;
+    }
+    footer {
+        flex-flow: column wrap;
+    }
+    footer p:last-child {
+        margin-left: 0;
+    }
+}
